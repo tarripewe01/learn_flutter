@@ -9,7 +9,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+        title: const Text("Learn Flutter"),
+        backgroundColor: Colors.green,
       ),
       body: SingleChildScrollView(
         child: Column(
