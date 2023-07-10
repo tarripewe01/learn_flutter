@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_flutter/core/notifiers.dart';
 import 'package:test_flutter/widget_tree.dart';
 
 void main() {
@@ -11,15 +12,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
-      ),
-      home: const WidgetTree(),
-      
+    // access to change theme
+    return ValueListenableBuilder(
+      valueListenable: isDarkModeNotifier,
+      builder: (context, value, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            brightness: value ? Brightness.dark : Brightness.light,
+            useMaterial3: true,
+          ),
+          home: const WidgetTree(),
+        );
+      },
     );
-    
   }
 }
